@@ -25,12 +25,12 @@ body { background: radial-gradient(circle at 15% 5%, #fffaf5 0, transparent 27re
 .bag-button { border-radius: 25px !important; gap: 8px; padding: 0 10px !important; width: auto !important; }
 .hero { background: radial-gradient(circle at 78% 42%, #f2bca3 0, #d99f91 10%, transparent 28%), linear-gradient(120deg, #f1ddd2 0%, #e7cfc5 46%, #d9b3b0 100%); isolation: isolate; min-height: 700px; padding-top: 130px; }
 .hero:before { background: repeating-linear-gradient(125deg, transparent 0 70px, #fff2 71px 72px); content: ''; inset: 0; opacity: .65; pointer-events: none; position: absolute; }
-.hero-copy, .hero-art, .hero-note { animation: rise-in .8s both; }.hero-art { animation-delay: .15s; }.hero-note { animation-delay: .3s; }
+.hero-copy, .hero-art, .hero-note { animation: rise-in .8s both; pointer-events: none; }.hero-copy a, .hero-art button, .hero-note a { pointer-events: auto; }.hero-art { animation-delay: .15s; }.hero-note { animation-delay: .3s; }
 .hero-art:after { border: 1px solid #fff8; border-radius: 50%; content: ''; height: 80%; position: absolute; width: 80%; }
 .sun-disc { box-shadow: 0 0 80px #e9a98b99, inset 15px 15px 35px #fff3; }
 .hero-lipstick { animation: float-lipstick 5s ease-in-out infinite; }
 .button { border-radius: 4px 18px 4px 18px; box-shadow: 0 9px 20px #3b1b1b20; }
-.product-card { animation: rise-in .7s both; }.product-card:nth-child(2) { animation-delay: .1s; }.product-card:nth-child(3) { animation-delay: .2s; }
+.product-card { animation: rise-in .7s both; position: relative; }.product-card button, .product-card a { position: relative; z-index: 2; }
 .product-visual { border: 1px solid #fff9; border-radius: 24px; box-shadow: inset 0 1px #fff8, 0 18px 35px #6b3b2b12; transition: box-shadow .35s, transform .35s; }
 .product-card:hover .product-visual { box-shadow: inset 0 1px #fff, 0 22px 40px #6b3b2b22; transform: translateY(-6px); }
 .product-info { padding-left: 6px; padding-right: 6px; }
@@ -41,6 +41,7 @@ footer { border-top: 1px solid #fff8; }
 @keyframes rise-in { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes float-lipstick { 0%, 100% { transform: rotate(14deg) translate(8px, 10px); } 50% { transform: rotate(10deg) translate(8px, 0); } }
 .add-button { background: var(--ink); border-radius: 4px 14px 4px 14px; color: #fff; display: block; font-size: 11px; margin: 16px 6px 0; padding: 13px 17px; text-align: center; transition: background .2s, transform .2s; width: calc(100% - 12px); }
+.add-button:active { transform: scale(.98); }
 .add-button:hover { background: var(--berry); transform: translateY(-2px); }
 .cart-drawer { background: #f7f1ebf2; border-left: 1px solid #fff; bottom: 0; box-shadow: -20px 0 60px #32191f25; display: flex; flex-direction: column; max-width: 420px; padding: 28px; position: fixed; right: 0; top: 0; transform: translateX(105%); transition: transform .35s ease; width: 90%; z-index: 12; backdrop-filter: blur(22px); }
 .cart-drawer.is-open { transform: translateX(0); }.cart-header { align-items: center; border-bottom: 1px solid #d9c9c3; display: flex; justify-content: space-between; padding-bottom: 18px; }.cart-header h2 { font-size: 38px; }.cart-header button { background: transparent; font-size: 27px; }.cart-items { flex: 1; padding: 18px 0; }.empty-cart { color: #806e69; font-family: 'Playfair Display'; font-size: 20px; line-height: 1.4; }.cart-item { align-items: center; border-bottom: 1px solid #ded0ca; display: flex; gap: 12px; padding: 15px 0; }.cart-item div { display: grid; flex: 1; gap: 5px; }.cart-item small { color: #806e69; font-size: 10px; }.cart-item > button { background: transparent; font-size: 21px; }.cart-swatch { border-radius: 50%; height: 28px; width: 28px; }.cart-footer { border-top: 1px solid #d9c9c3; padding-top: 18px; }.cart-footer > div { display: flex; justify-content: space-between; margin-bottom: 18px; }.cart-footer .button { justify-content: center; width: 100%; }.drawer-overlay { background: #26171966; inset: 0; opacity: 0; pointer-events: none; position: fixed; transition: opacity .35s; z-index: 11; }.drawer-overlay.is-open { opacity: 1; pointer-events: auto; }.toast { background: var(--ink); border: 1px solid #ffffff44; border-radius: 5px 18px 5px 18px; bottom: 25px; color: white; font-size: 11px; left: 50%; opacity: 0; padding: 14px 20px; pointer-events: none; position: fixed; transform: translate(-50%, 15px); transition: opacity .25s, transform .25s; z-index: 20; }.toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
