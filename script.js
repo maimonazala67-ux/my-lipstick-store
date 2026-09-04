@@ -9,6 +9,7 @@ const shadeName = document.querySelector('[data-shade-name]')
 const shadeTone = document.querySelector('[data-shade-tone]')
 const shadeSwatch = document.querySelector('[data-shade-swatch]')
 const heroShade = document.querySelector('[data-hero-shade]')
+const heroIndex = document.querySelector('[data-hero-index]')
 const cartPage = document.querySelector('[data-cart-page]')
 const cartItems = document.querySelector('[data-cart-items]')
 const cartCount = document.querySelector('[data-cart-count]')
@@ -24,6 +25,7 @@ function setShade(index) {
   shadeTone.textContent = shade.tone
   shadeSwatch.style.backgroundColor = shade.color
   heroShade.textContent = shade.name
+  heroIndex.textContent = String(activeShadeIndex + 1).padStart(2, '0')
   document.documentElement.style.setProperty('--active-shade', shade.color)
 }
 
@@ -90,3 +92,4 @@ document.querySelector('[data-try-on]').addEventListener('click', () => {
 })
 
 setShade(0)
+window.setInterval(() => setShade(activeShadeIndex + 1), 4200)
