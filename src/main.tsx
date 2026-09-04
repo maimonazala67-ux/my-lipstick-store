@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { StrictMode, useState } from 'react'
+import { createRoot } from 'react-dom/client'
 import { ArrowRight, Camera, ChevronDown, Heart, Menu, Search, ShoppingBag, Sparkles, X } from 'lucide-react'
 import './styles.css'
 
@@ -98,3 +99,9 @@ function App() {
 }
 
 export default App
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
