@@ -91,5 +91,5 @@ document.querySelector('[data-try-on]').addEventListener('click', () => {
   document.querySelector('[data-try-message]').textContent = 'Camera preview ready for your shade.'
 })
 
-setShade(0)
+setShade(1)
 window.setInterval(() => setShade(activeShadeIndex + 1), 4200)
