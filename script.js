@@ -9,7 +9,7 @@ const shadeName = document.querySelector('[data-shade-name]')
 const shadeTone = document.querySelector('[data-shade-tone]')
 const shadeSwatch = document.querySelector('[data-shade-swatch]')
 const heroShade = document.querySelector('[data-hero-shade]')
-const cartDrawer = document.querySelector('[data-cart-drawer]')
+const cartPage = document.querySelector('[data-cart-page]')
 const cartItems = document.querySelector('[data-cart-items]')
 const cartCount = document.querySelector('[data-cart-count]')
 const cartTotal = document.querySelector('[data-cart-total]')
@@ -53,20 +53,26 @@ function renderCart() {
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
   cartCount.textContent = count
   cartTotal.textContent = `$${total}`
-  cartItems.innerHTML = cart.length ? cart.map((item) => `<div class="cart-item"><span class="cart-swatch" style="background:${item.color}"></span><div><strong>${item.name}</strong><small>$${item.price} · Qty ${item.quantity}</small></div><button data-remove="${item.name}" aria-label="Remove ${item.name}">×</button></div>`).join('') : '<p class="empty-cart">Your bag is waiting for a little color.</p>'
+  cartItems.innerHTML = cart.length ? cart.map((item) => `<div class="cart-item"><span class="cart-swatch" style="background:${item.color}"></span><div><strong>${item.name}</strong><small>$${item.price} · ${item.tone || 'Couture color'}</small></div><div class="quantity-control"><button data-quantity="-1" data-name="${item.name}" aria-label="Decrease ${item.name} quantity">−</button><span>${item.quantity}</span><button data-quantity="1" data-name="${item.name}" aria-label="Increase ${item.name} quantity">+</button></div><strong>$${item.price * item.quantity}</strong><button data-remove="${item.name}" aria-label="Remove ${item.name}">×</button></div>`).join('') : '<p class="empty-cart">Your bag is waiting for a little color.</p>'
   cartItems.querySelectorAll('[data-remove]').forEach((button) => button.addEventListener('click', () => {
     cart = cart.filter((item) => item.name !== button.dataset.remove)
     renderCart()
   }))
+  cartItems.querySelectorAll('[data-quantity]').forEach((button) => button.addEventListener('click', () => {
+    const item = cart.find((entry) => entry.name === button.dataset.name)
+    item.quantity += Number(button.dataset.quantity)
+    if (item.quantity < 1) cart = cart.filter((entry) => entry.name !== item.name)
+    renderCart()
+  }))
 }
 
-function openCart() { cartDrawer.classList.add('is-open'); document.querySelector('.drawer-overlay').classList.add('is-open') }
-function closeCart() { cartDrawer.classList.remove('is-open'); document.querySelector('.drawer-overlay').classList.remove('is-open') }
+function openCart() { cartPage.classList.add('is-open'); document.body.classList.add('cart-is-open'); renderCart() }
+function closeCart() { cartPage.classList.remove('is-open'); document.body.classList.remove('cart-is-open') }
 
 document.querySelectorAll('[data-add-cart]').forEach((button) => button.addEventListener('click', () => {
   const existing = cart.find((item) => item.name === button.dataset.name)
   if (existing) existing.quantity += 1
-  else cart.push({ name: button.dataset.name, price: Number(button.dataset.price), color: button.dataset.color, quantity: 1 })
+  else cart.push({ name: button.dataset.name, price: Number(button.dataset.price), color: button.dataset.color, quantity: 1, tone: button.closest('.product-card').querySelector('.product-info p').textContent })
   renderCart()
   showToast(`${button.dataset.name} added to your bag`)
 }))
