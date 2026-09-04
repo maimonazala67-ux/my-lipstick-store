@@ -52,5 +52,9 @@ footer { border-top: 1px solid #fff8; }
 .hero-lipstick .lipstick-case:before { background: linear-gradient(105deg, transparent 20%, #ffffffbb 42%, transparent 58%); content: ''; inset: 0; opacity: .75; position: absolute; transform: translateX(-120%); animation: glass-shimmer 3.8s ease-in-out infinite; }
 .hero-lipstick .lipstick-case:after { background: radial-gradient(circle, #fff 0 1px, transparent 2px) 0 0 / 17px 19px, radial-gradient(circle, #f8d7e5 0 1px, transparent 2px) 8px 9px / 21px 23px; content: ''; inset: 0; opacity: .32; pointer-events: none; position: absolute; }
 @keyframes glass-shimmer { 0%, 28% { transform: translateX(-120%); } 65%, 100% { transform: translateX(120%); } }
+.header-actions { gap: 12px; }
+.header-actions button { font-size: 16px; height: 44px; width: 44px; }
+.bag-button { font-size: 16px !important; padding: 0 14px !important; }
+.bag-button span { font-size: 11px; height: 22px; width: 22px; }
 .cart-product-art { align-items: center; background: #eadbd0; border-radius: 12px; display: flex; flex-direction: column; height: 64px; justify-content: end; overflow: hidden; padding-bottom: 7px; width: 64px; }.cart-product-art i { background: var(--cart-shade); border-radius: 50% 50% 40% 40%; display: block; height: 16px; width: 16px; }.cart-product-art b { background: #302729; border-radius: 2px 2px 4px 4px; display: block; height: 32px; width: 20px; }
 .product-visual > img { height: 100%; inset: 0; object-fit: cover; position: absolute; width: 100%; }.product-visual > .mini-lipstick { opacity: .18; z-index: 1; }.product-visual > .best-seller { z-index: 2; }.try-on-image > img { height: 100%; inset: 0; object-fit: cover; opacity: .58; position: absolute; width: 100%; }.try-on-image > .portrait-glow, .try-on-image > .portrait { opacity: .28; z-index: 1; }.try-on-image > .image-label { z-index: 2; }
