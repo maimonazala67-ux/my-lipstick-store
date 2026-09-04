@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://my-lipstick-store-my7p.vercel.app/sitemap.xml
